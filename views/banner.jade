@@ -1,0 +1,21 @@
+mixin OwlSubcategories(url, name)
+  div
+    div.carousel-container
+      a.subcat(href= '/gallery/id/#{url}?limit=15')!= name
+            
+.container-fluid
+  .header-wrapper
+    h2 #{mainCategoryName}
+    .container-fluid
+      .row
+        .col-sm-8.col-sm-offset-2.hidden-xs
+          .subcategories.owl-carousel.owl-theme
+            -if(catJson != undefined)
+              each category in catJson
+                -if(category.parent == mainCategoryId)
+                  +OwlSubcategories(category._id, category.name)
+  .wrapper
+    ol.breadcrumb
+      -for(var i=0; i < crumbs.length-1;i++)
+        li: a(href="#{crumbs[i].url}") #{crumbs[i].name}
+      li.active #{crumbs[crumbs.length-1].name}

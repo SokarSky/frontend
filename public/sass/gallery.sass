@@ -1,0 +1,84 @@
+$main-font: Open Sans, sans-serif
+$panel-color: #0f0f0f
+$label-back-color: rgba(246,139,3,0.85)
+$main-text-color: white
+$dark-line-color: #191919
+$xs-device: 320px
+$sm-device: 768px
+$md-device: 992px
+$lg-device: 1200px
+
+body *
+  font-family: $main-font
+main
+  overflow: hidden
+  // margin-top: 2%
+  .item-group
+    //margin: 2% auto
+    overflow: hidden
+    text-align: center
+    
+    //max-height: 300px
+    //padding: 0 15%
+    .item
+      max-height: 274px
+      padding: 1.2%
+      .item-prev
+        height: 168px
+        //width: auto
+        border-radius: 3px
+        overflow: hidden
+        .item-name
+          color: $main-text-color
+          background: $label-back-color
+          border-radius: 4px
+          font-size: 9pt
+          text-shadow: 1px 1px 1px #8b3f03
+          left: 1em
+          top: 1em
+          margin-right: 1em
+          padding: 0.6em 1em
+          position: absolute
+          text-transform: uppercase
+          @media (min-width: $sm-device) and (max-width: 991px)
+            line-height: inherit
+            font-size: 8pt
+            padding-top: 0.5em
+            padding-bottom: 0.5em
+            max-height: 100%
+            overflow: hidden
+        img
+          max-width: 100%
+          max-height: 100%
+      // .item-short-info
+      //   max-height: (695px - 625px)
+      //   overflow: hidden
+      //   background: $panel-color
+      //   font-size: 9pt
+      //   border-radius: 3px
+      //   text-transform: uppercase
+      //   color: #f68b03
+      //   div
+      //     margin: 1.5em
+  .row
+    .navbar
+      padding: 0
+      margin-top: 2%
+      min-height: 40px
+      max-height: 40px
+      overflow: hidden
+      //border-radius: 3px
+    .navbar ul>li
+      padding: 0
+      >a
+        padding: 0.8em
+  .bg-danger
+    padding: 20px
+    border-radius: 5px
+    font-size: 12pt
+    @media(min-width: $sm-device) and (max-width: 991px)
+      font-size: 10pt
+    @media(max-width: $xs-device)
+      font-size: 10pt
+    span
+      margin-right: 10px

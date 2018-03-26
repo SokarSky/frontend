@@ -1,0 +1,127 @@
+$xs-device: 320px
+$sm-device: 768px
+$md-device: 992px
+$lg-device: 1200px
+
+main
+  @media(min-width: $sm-device) and (max-width: 991px)
+    padding-top: 0.5em
+    
+  //font-family: 'Open Sans'
+  padding-top: 20px
+  padding-bottom: 20px
+  .form-inline
+    >h3 
+      text-align: center
+    #name
+      width: 85%
+      @media(max-width: 768px)
+        width: 100%
+    
+    
+    .input-group-btn
+      margin-left: 0
+      @media(max-width: 768px)
+        width: 30%
+        text-align: center
+        border-radius: 5px
+  
+  .left-sidebar
+    background: #f9f9f9
+    padding-top: 2em
+    border: 1px solid #f7f7f7
+    padding-left: 1.5em
+    padding-right: 1.5em
+    padding-bottom: 2em
+    margin-bottom: 2em
+    
+    .form-inline
+      padding: 0
+      input.form-control
+        width: 85%
+        @media(min-width: $md-device) and (max-width: $lg-device - 1)
+          width: 80%
+    >.list-group, .panel
+      box-shadow: none
+      border: none
+      .list-group-item-heading
+        margin-bottom: 1em
+      .panel-title
+        @media(min-width: $md-device) and (max-width: $lg-device - 1)
+          font-size: 10.5pt
+        a
+          >.caret
+            margin: 0.5em 3em 0.5em 1em
+            @media(min-width: $md-device) and (max-width: $lg-device - 1)
+              margin: 0.5em 2em 0.5em 0.3em
+  .item
+    padding: 1em 2em 1em 1em
+    margin-bottom: 1em
+    border: 1px solid #f7f7f7
+    @media(min-width: $sm-device) and (max-width: 991px)
+      font-size: 10pt
+      padding: 0.5em 1em 0.5em
+    @media (min-width: 320px) and (max-width: 425px)
+      padding: 1em
+    img
+      height: 215px
+      @media(min-width: $md-device) and (max-width: $lg-device - 1)
+        height: auto 
+        max-height: 215px 
+      @media(min-width: $sm-device) and (max-width: 991px)
+        max-height: 200px
+      @media (min-width: 320px) and (max-width: 425px)
+        height: 180px
+        margin: auto
+        margin-top: -2.4em
+    .img-responsive
+      //border: 1px solid #f7f7f7
+    .title
+      color: #f29927
+      //font-family: 'Noto Sans'
+      font-weight: bold
+      margin-bottom: 0.5em
+      margin-top: 0
+      @media(min-width: $sm-device) and (max-width: 991px)
+        font-size: 12pt
+        margin-left: 1em
+      @media (min-width: 320px) and (max-width: 425px)
+        font-size: 12pt
+        text-align: center
+    .date, .tags
+      margin-bottom: 1em
+      @media(min-width: $sm-device) and (max-width: 991px)
+        margin-left: 1em
+      @media (min-width: 320px) and (max-width: 425px)
+        margin-left: 1em
+      >a
+        margin: 5px
+        outline: none
+        >.glyphicon-tag:before
+          margin-right: 3px
+      
+    .shortInfo
+      margin: 1.1em
+      max-height: 100px
+      overflow: hidden
+      font-size: 11pt
+      background-position: right bottom
+      background-size: 20px
+      @media (min-width: 320px) and (max-width: 425px)
+        font-size: 10pt
+    .more
+      a.btn
+        background: #333
+        outline: none
+        @media(min-width: $sm-device) and (max-width: 991px)
+          padding: 4px 10px
+          margin-left: 1em
+        @media (min-width: 320px) and (max-width: 991px)
+          font-size: 10pt
+  nav
+    @media (min-width: 320px) and (max-width: 991px)
+      text-align: center
+    .pagination>li
+      >a, span
+        @media (min-width: 320px) and (max-width: 425px)
+          padding: 4px 10px

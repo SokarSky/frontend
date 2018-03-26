@@ -1,0 +1,161 @@
+$xs-device: 320px
+$sm-device: 768px
+$md-device: 992px
+$lg-device: 1200px
+
+body *
+  font-family: 'Open Sans'
+
+a 
+  outline: none !important
+header 
+  .navbar
+    margin-bottom: 0
+    background: #fff
+    padding: 0 15%
+    border: none
+    -webkit-border-radius: none
+    -moz-border-radius: none
+    border-radius: none
+    @media (min-width: $sm-device) and (max-width: 1199px) 
+      padding: 0 8.5%
+    >.container-fluid
+      >.navbar-header
+        >.navbar-brand
+          padding-top: 0
+          max-height: 86px
+          @media (min-width: $sm-device) and (max-width: 1199px)
+            padding: 0px
+            margin: 0px
+            overflow: hidden
+            height: auto
+          img
+            width: 100%
+            margin-top: 0.4em
+            @media (min-width: $sm-device) and (max-width: 1199px)
+              height: auto
+              width: 90%
+              margin: 0.2em 0
+            @media (max-width: 767px)
+              height: 100%
+              width: auto
+      >#navbar-collapsed
+        @media (min-width: $sm-device) and (max-width: 1199px)
+          margin: 0
+          padding: 0
+          margin-right: 1em
+        >ul
+          >li
+            #searchForm
+              padding: 1.7em 1em
+              @media (min-width: $md-device) and (max-width: 1199px)
+                padding: 0 1em
+                margin-top: 1.3em
+              @media (min-width: $sm-device) and (max-width: 991px)
+                padding: 0
+                margin: 1em
+                >div.form-group
+                  padding-right: 0
+              #name
+                position: relative
+                @media (min-width: $sm-device) and (max-width: 991px)
+                  padding-top: 0
+                  padding-bottom: 0
+                  margin: 0
+                  font-size: 9pt
+                  height: 2.5em
+                  width: 90%
+              .row>span
+                position: absolute
+                top: 0px
+                right: 0px
+                #searchBtn
+                  padding: 0.63em 1em !important
+                  @media (min-width: $sm-device) and (max-width: 991px)
+                    padding-top: 0.7em !important
+                    font-size: 9pt
+            >a
+              padding-top: 33px
+              padding-bottom: 33px
+              padding-left: 20px
+              padding-right: 20px
+              font-size: 1em
+              font-family: 'Noto Sans'
+              color: #000000
+              text-transform: uppercase
+              @media (min-width: $md-device) and (max-width: 1199px)
+                font-size: 10pt
+                padding: 2em 1.3em
+              @media (min-width: $sm-device) and (max-width: 991px)
+                font-size: 8pt
+                padding: 1.8em 1em
+            >ul.dropdown-menu
+              width: 79vw
+              position: absolute
+              right: -40vw
+              padding: 0 20px 20px
+              @media (min-width: $md-device) and (max-width: 1199px)
+                width: 90vw
+                right: -48.5vw
+              @media (min-width: $sm-device) and (max-width: 991px)
+                width: 101vw
+                right: -56vw
+                padding-left: 0
+                padding-right: 0
+              @media (max-width: 767px)
+                position: static
+                width: auto
+              a
+                color: #444
+                &:hover
+                  color: #d7742f
+              ul
+                list-style: none
+              >.container-fluid > .row > ul
+                padding: 0 10%
+                overflow: hidden
+                @media (min-width: $sm-device) and (max-width: 1199px)
+                  padding: 0 6%
+                >li
+                  padding-top: 20px
+                  >a
+                    border-bottom: 1px solid #f17500
+                    width: auto
+                    color: #823102
+                    font-weight: bold
+                    text-transform: uppercase
+                    padding-bottom: 0.3em
+                    margin-bottom: 1em
+                    font-family: 'Open Sans'
+                    &:hover
+                      text-decoration: none
+                  >ul
+                    padding: 0
+                    overflow: hidden
+                    margin-top: 1em
+                    li
+                      width: 31%
+                      float: left
+                      margin: 0.5em
+                      @media (min-width: $sm-device) and (max-width: 991px)
+                        font-size: 10pt 
+                      @media (max-width: 767px)
+                        width: auto
+                        float: none
+          .active, .open>a
+            border-top: 3px solid #d7742f
+            background: none
+            box-shadow: none
+            padding-top: 30px
+            @media(min-width: $md-device) and (max-width: 1199px)
+              padding-top: 1.8em
+            @media (min-width: $sm-device) and (max-width: 991px)
+              padding-top: 1.5em
+  @media (max-width: 767px)	
+    .header-wrapper
+      height: 6em
+      width: 100vw
+      display: table-cell
+      vertical-align: middle
+      h2
+        font-size: 1.3em

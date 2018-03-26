@@ -1,0 +1,59 @@
+
+nav.navbar.navbar-default 
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-collapsed', aria-expanded='false')
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href='/').col-xs-3.col-sm-8.col-md-10.col-lg-12
+        img(src='/home-img/logo.png' alt='logo')
+      
+    // Collect the nav links, forms, and other content for toggling
+    #navbar-collapsed.collapse.navbar-collapse.navbar-right
+      ul.nav.navbar-nav
+        li
+          a(href='/')
+            | Головна 
+            span.sr-only (current)
+
+        li.dropdown
+          a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+            | Категорії 
+            span.caret
+          ul.dropdown-menu
+            .container-fluid
+              .row
+                !=catList
+                
+        li
+          a(href='/about') Про музей
+        li
+          a(href='/contacts') Контакти
+        li
+          form#searchForm.form-inline(role='form' method='post')
+            .form-group.col-sm-12.col-xs-10
+              .row
+                input#name.form-control.col-sm-8(type="text", name='searchValue1' placeholder='Пошук...' value = "")
+                span.input-group-btn
+                  button#searchBtn.btn.btn-default(type = 'submit' href='/search/=')
+                    span.glyphicon.glyphicon-search(aria-hidden="true")
+                    
+script(type='text/javascript').
+  $(document).ready(function(){
+    $('input[name="searchValue"]').change(
+      function(){
+      var text = $('#searchForm').find('input[name="searchValue"]').val();
+      $('#searchBtn').attr('href', '/search/='+text);
+    });
+    $(function () {
+      $('header #navbar-collapsed .navbar-nav>li>a').each(function () {             
+          var location = window.location.href; 
+          var link = this.href;                
+          if(location == link) {               
+              $(this).addClass('active');
+          }
+      });
+    });
+  })

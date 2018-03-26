@@ -1,0 +1,98 @@
+$xs-device: 320px
+$sm-device: 768px
+$md-device: 992px
+$lg-device: 1200px
+
+header .container-fluid
+  padding: 0
+  .header-wrapper
+    background: url(../imgs/images.png) 100% no-repeat
+    background-position: center
+    background-size: cover
+    padding-top: 4%
+    @media(min-width: $lg-device)
+      min-height: 145px
+    @media(min-width: $md-device) and (max-width: $lg-device - 1)
+      min-height: 120px
+    @media(min-width: $sm-device) and (max-width: $md-device - 1)
+      min-height: 90px
+    @media(min-width: $xs-device) and (max-width: 450px)
+      padding: 0em 1em 0
+    >.container-fluid
+      >.row
+        margin-left: 2em
+        margin-right: 2em
+        margin-bottom: 0.3em
+    h2
+      font-family: 'Noto Sans'
+      color: #fff
+      text-align: center
+      text-transform: uppercase
+      margin: 0 auto
+      text-shadow: 1px 1px 3px #823102
+      @media (min-width: $md-device) and (max-width: $lg-device - 1)
+        font-size: 20pt
+      @media (min-width: $sm-device) and (max-width: $md-device - 1)
+        font-size: 16pt
+    .subcategories
+      color: #fff
+      text-align: center
+      margin-top: 1.5em
+      margin-bottom: 1em
+      .carousel-container
+        width: 95%
+      .subcat
+        color: #fff
+        font-size: 13pt
+        text-shadow: 1px 1px 1px #823102
+        @media (min-width: $md-device) and (max-width: $lg-device - 1)
+          font-size: 12pt
+        @media (min-width: $sm-device) and (max-width: $md-device - 1)
+          font-size: 11pt
+      .owl-nav
+        position: absolute
+        top: 0
+        margin: 0
+        width: 100%
+        height: 1px
+        .owl-prev, .owl-next
+          position: relative
+          top: -0.3em
+          right: -30vw
+          background: none
+          @media(min-width: $xs-device) and (max-width: 450px)
+            right: -35vw
+        .owl-prev
+          left: -30vw
+          @media(min-width: $xs-device) and (max-width: 450px)
+            left: -35vw
+  .wrapper
+    .breadcrumb
+      background: #141414
+      border: 0 solid #141414
+      border-radius: 0
+      display: block
+      text-align: center
+      @media (min-width: $sm-device) and (max-width: $lg-device - 1)
+        padding: 6px 15px
+      @media (max-width: 767px)
+        height: 2em
+      li
+        font-size: 14px
+        @media (min-width: $sm-device) and (max-width: $lg-device - 1)
+          font-size: 10pt
+        @media (min-width: $sm-device) and (max-width: $md-device - 1)
+          font-size: 8pt
+        @media (max-width: 767px)
+          font-size: 8pt
+        a
+          color: white
+          &:hover
+            color: #ffae17
+          @media(max-width: 767px)
+            font-size: 8pt
+      >.active
+          color: #ffae17
+      li + li:before
+        color: #c7c7c7
+        content: "\003E\00a0"

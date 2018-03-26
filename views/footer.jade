@@ -1,0 +1,33 @@
+footer.footer
+  nav.navbar.navbar-inverse
+    .container-fluid
+      // Collect the nav links, forms, and other content for toggling
+      .collapse.navbar-collapse.navbar-left
+        ul.nav.navbar-nav
+          li
+            a(href='/')
+              | Головна 
+              span.sr-only (current)
+          li
+            a(href='/about') 
+              | Про музей
+          li
+            a(href='/contacts') 
+              | Контакти
+      .navbar-header
+        a.navbar-brand(href='/'): img(src='/home-img/logo.png')
+    .down
+      #down
+        p
+          span.glyphicon.glyphicon-copyright-mark(aria-hidden="true")
+          |  2016 КДПУ
+      .social-icons.hidden-xs
+        a(href='https://play.google.com/store/apps/details?id=com.kspu.dimonn445.museum&hl=uk').btn
+          img(src='/imgs/andriod.png')
+          
+        a(href='http://www.facebook.com/pages/KDPU-im-VVinnicenka/168021786570936').btn
+          img(src='/imgs/fb.png')
+          
+        a(href='http://vk.com/club2111241').btn
+          img(src='/imgs/vk.png')
+        

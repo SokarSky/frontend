@@ -1,0 +1,150 @@
+mixin OwlCar(text, author)
+	div
+		div.carousel-container
+			h1: q= text
+			p.author= author
+	
+mixin HistoryCar(name, description)
+	div.col-xs-12.col-sm-11.col-md-7.col-md-offset-4.col-lg-6.col-lg-offset-5
+		h2.museum-name-h= name
+		p.descript= description
+
+doctype html5
+html(lang='uk')
+	head
+		title= title
+		link(rel="icon" href="/home-img/favicon.png" type="image/x-icon")
+		
+		// Yandex.Metrika counter
+		script(type='text/javascript').
+			(function (d, w, c) 
+			{ 
+				(w[c] = w[c] || []).push(function() 
+					{ 
+						try 
+						{ 
+							w.yaCounter37549200 = new Ya.Metrika({
+								id:37549200, 
+								clickmap:true, 
+								trackLinks:true, 
+								accurateTrackBounce:true, 
+								webvisor:true 
+							}); 
+						} 
+						catch(e) 
+						{ }
+					}); 
+					var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () {n.parentNode.insertBefore(s, n);s }; 
+					s.type = "text/javascript"; 
+					s.async = true; 
+					s.src = "https://mc.yandex.ru/metrika/watch.js"; 
+					if (w.opera == "[object Opera]"){ 
+						d.addEventListener("DOMContentLoaded", f, false); 
+					}
+					else { f(); }
+			})(document, window, "yandex_metrika_callbacks");
+		noscript
+			div
+				img(src='https://mc.yandex.ru/watch/37549200', style='position:absolute; left:-9999px;', alt='')
+		script(src="https://code.jquery.com/jquery-2.2.3.min.js", integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=", crossorigin="anonymous")
+		script(src="/owlcarousel/owl.carousel.min.js")
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', integrity='sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS', crossorigin='anonymous')
+		link(rel="stylesheet", href="/owlcarousel/assets/owl.carousel.min.css")
+		link(rel="stylesheet", href="/owlcarousel/assets/owl.theme.default.min.css")
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', crossorigin='anonymous')
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css', integrity='sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r', crossorigin='anonymous')
+		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Raleway:400,700|Open+Sans&subset=latin,cyrillic')
+		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Noto+Sans')
+		link(rel='stylesheet', href='stylesheets/footer.css')
+		link(rel='stylesheet', href='stylesheets/home.css')
+		link(rel='stylesheet', href='stylesheets/menu.css')
+		script(type='text/javascript').
+			$(document).ready(function(){
+				$('.slide').owlCarousel({
+					autoplay: true,
+					loop: true,
+					items:1,
+					dots: false,
+					autoplayTimeout:10000,
+				});
+				$('.history').owlCarousel({
+					loop: false,
+					items:1,
+					dots: false
+				});
+				$('.mit').owlCarousel({
+					nav: true,
+					navText: ["<img src='/home-img/leftArr.png'>","<img src='/home-img/rightArr.png'>"],
+					items:3,
+					loop:true,
+					dots:false,
+					margin:5,
+					responsiveClass:true,
+					responsive:{
+						0:{
+							items:2,
+							autoplay: true,
+							nav: false
+						},
+						600:{
+							autoplay: true,
+							nav: false
+						},
+						992:{
+							items:4
+						},
+						1200:{
+							items:4
+						}
+						
+					}
+				});
+			});
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		meta(charset='utf8')
+	body
+		header
+			//- responsive all-pages menu 
+			include ./menu.jade
+			//- carousel
+			.container-fluid
+				.slide.owl-carousel
+					+OwlCar('Історія - свідок минулого, світло істини, жива пам`ять, вчитель життя, вісник давнини','Цицерон')
+					+OwlCar('Історія - це філософія в прикладах', 'Галікарнаський')
+					+OwlCar('Історія мого життя складає частину історії моєї Батьківщини','Т.Г. Шевченко')
+		main
+			.container-fluid
+				-for(i = 0; i < parentCount; i++)
+					.museums
+						div.museum-name.col-sm-10.col-sm-offset-1
+							h3#museum1= parentsName[i]
+						.container.col-sm-10.col-sm-offset-1
+							.mit.owl-carousel.owl-theme
+								each elem in json
+									-if(elem.parent == parentsId[i])
+										div
+											a(href='/gallery/id/'+'#{elem._id}?limit=15' )
+												-if(size)
+													img(src='#{elem.img.path}'+'_md.jpg' alt='#{elem.name}')
+												-else
+													img(src='#{elem.img.path}'+'_sm.jpg' alt='#{elem.name}')
+												p.item-name= elem.name
+			.container-fluid
+				.history.owl-carousel.owl-theme
+					+HistoryCar('Музей Історії Техніки', '26 листопада 2015 року на фізико-математичному факультеті було відкрито Музей Історії Техніки. Роботу з безпосереднього наповнення експонатами, створення їх описів, класифікацією об’єктів, аналізом походження, з’ясування технічних характеристик та часових рамок виконували П.І.Андронатій, О.Ф.Баранюк та В.В.Котяк. Оформленням описів, розміщенням експонатів займалися завідувачі лабораторіями кафедри інформатики Ірина Кадигроб, Ірина Кисла, Олена Семенова та Тетяна Чернишова. Загальне організаційне та науково-методичне керівництво здійснював декан факультету Р.Я.Ріжняк.')
+			.container-fluid
+				.comments.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
+					div.center
+						img(src='/home-img/marks.png')
+					-for(i = 0; i < comments.count; i++)	
+						.comment.row
+							img.col-sm-2.col-xs-3(src='/home-img/person-icon.png')
+							div.col-sm-10.col-xs-9
+								p.name= comments.comments[i].author
+								q= comments.comments[i].body
+								
+					div.center
+						img(src='/home-img/marks.png')       
+	include ./footer.jade
+	
+	

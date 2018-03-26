@@ -1,0 +1,23 @@
+ul.list-group
+  h4.list-group-item-heading
+    | Категорії
+  .panel-group#accordion
+    .panel.panel-default
+      each category in catJson
+        - if(category.parent == parentCategory[0])
+            -var child = 0;
+            h4.panel-title
+              span.list-group-item
+                a(href='/gallery/id/#{category._id}?limit=15') #{category.name}
+                each subcat in catJson
+                  -if(subcat.parent == category._id)
+                    - child++;
+                -if (child > 0)  
+                  a(data-toggle="collapse" data-parent="#accordion" href='#'+'#{category._id}')
+                    span.caret
+        
+        div(id = '#{category._id}').panel-collapse.collapse
+          each subcat in catJson
+            -if(subcat.parent == category._id)
+              .panel-body
+                a(href='/gallery/id/#{subcat._id}?limit=9') #{subcat.name}

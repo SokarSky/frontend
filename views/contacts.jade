@@ -1,0 +1,154 @@
+doctype html5
+html(lang='uk')
+  head
+    title= title
+    
+    // Yandex.Metrika counter
+    
+    script(type='text/javascript').
+      (function (d, w, c) 
+        { (w[c] = w[c] || []).push(function() 
+          { 
+            try 
+              { 
+                w.yaCounter37549200 = new Ya.Metrika({
+                  id:37549200, 
+                  clickmap:true, 
+                  trackLinks:true, 
+                  accurateTrackBounce:true, 
+                  webvisor:true 
+                }); 
+              } 
+              catch(e) 
+              { }
+          }); 
+          var n = d.getElementsByTagName("script")[0],
+          s = d.createElement("script"),
+          f = function () { 
+            n.parentNode.insertBefore(s, n); 
+          }; 
+          s.type = "text/javascript"; 
+          s.async = true; 
+          s.src = "https://mc.yandex.ru/metrika/watch.js"; 
+          if (w.opera == "[object Opera]"){ 
+            d.addEventListener("DOMContentLoaded", f, false); 
+          }
+          else { f(); } })(document, window, "yandex_metrika_callbacks");
+    noscript
+      div
+        img(src='https://mc.yandex.ru/watch/37549200', style='position:absolute; left:-9999px;', alt='')
+    // Yandex.Metrika counter
+    
+    script(src="https://code.jquery.com/jquery-2.2.3.min.js", integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=", crossorigin="anonymous")
+    script(src="/owlcarousel/owl.carousel.min.js")
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', integrity='sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS', crossorigin='anonymous')
+    link(rel="stylesheet", href="/owlcarousel/assets/owl.carousel.min.css")
+    
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', crossorigin='anonymous')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css', integrity='sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r', crossorigin='anonymous')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Raleway:400,700|Open+Sans&subset=latin,cyrillic')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Noto+Sans')
+    
+    link(rel='stylesheet', href='/stylesheets/footer.css', type='text/css')
+    link(rel='stylesheet', href='/stylesheets/menu.css', type='text/css')
+    link(rel='stylesheet', href='/stylesheets/banner.css', type='text/css')
+    link(rel='stylesheet', href='/stylesheets/contacts.css', type='text/css')
+
+    script(type='text/javascript').
+      $(document).ready(function(){
+        $('.form-inline').each(function(){
+          var form = $(this);
+          var btn = form.find('#submit');
+          
+          form.find('.input').addClass('empty_field');
+          function checkInput(){
+            form.find('.input').each(function(){
+              if($(this).val() != "" ){
+                $(this).removeClass('empty_field');
+              }else{
+                $(this).addClass('empty_field');
+              }
+            });
+          }
+          function lightEmpty(){
+            form.find('.empty_field').css({'border-color':'#d8512d'});
+            // Через полсекунды удаляем подсветку
+            setTimeout(function(){
+              form.find('.empty_field').removeAttr('style');
+            },500);
+          }
+          
+          setInterval(function(){
+            checkInput();
+              var sizeEmpty = form.find('.empty_field').size();
+              if(sizeEmpty > 0){
+                if(btn.hasClass('disabled')){
+                  return false
+                } else {
+                  btn.addClass('disabled')
+                }
+              } else {
+                btn.removeClass('disabled')
+              }
+          },500);
+          
+          btn.click(function(){
+            if($(this).hasClass('disabled')){
+              // подсвечиваем незаполненные поля и форму не отправляем, если есть незаполненные поля
+              lightEmpty();
+              return false
+            } else {
+              // Все хорошо, все заполнено, отправляем форму
+              form.submit();
+            }
+          });
+        });
+      });
+    
+    
+    script(src="https://www.google.com/recaptcha/api.js", async defer)
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    meta(charset='utf8')
+  body
+    header
+      include ./menu.jade
+      include ./banner.jade
+    main
+      .container-fluid
+        .row
+          .contacts.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+            h3 
+              b #{mainInfo.name}
+            p 
+              | знаходиться за адресою:
+            p
+              b= mainInfo.contact.index + ', ' + mainInfo.contact.address
+            p 
+              b= 'телефон: ' + mainInfo.contact.phone
+             
+            p
+              | Скористайтеся віртуальною мапою, яка допоможе Вам краще зорієнтуватися в пошуку місцезнаходження нашого факультету
+            -if(postSuccess != undefined)
+              -if(postSuccess === true)
+                .col-sm-10.col-sm-offset-1.alert.alert-success
+                  | Дякуємо за відгук! Він з'явиться на сійті після перевірки модератором.
+              -else
+                .col-sm-10.col-sm-offset-1.alert.alert-warning
+                  | При відправці форми сталася помилка. Спробуйте ще раз.
+                
+        .container-fluid
+          .row
+            form.form-inline.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3(role='form' method='post')
+              h3 Залишити відгук
+              .form-group
+                input.input#name.form-control.col-sm-12(type="text", name='author' placeholder='Ім\'я' value = "")
+                textarea.input#exampleTextarea.form-control.col-sm-12(rows='3', name='body' placeholder='Ваш відгук' style='margin-top: 0px; margin-bottom: 0px; height: 86px;' value = "")
+                .row
+                  .col-xs-4.col-sm-4.g-recaptcha(data-sitekey="6LcLNyATAAAAACKxR0wLc926l7wc8XD-fq29laAY")
+                button.col-md-3.btn.btn-default#submit(type='submit') Відправити
+          
+            
+      .container-fluid
+        .row
+          iframe#map(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14951.05390468034!2d32.25239564157283!3d48.51410493740516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d042b163e8cdb5%3A0x47eb8871dbedea9a!2z0JrRltGA0L7QstC-0LPRgNCw0LTRgdGM0LrQuNC5INC00LXRgNC20LDQstC90LjQuSDQv9C10LTQsNCz0L7Qs9GW0YfQvdC40Lkg0YPQvdGW0LLQtdGA0YHQuNGC0LXRgiDRltC80LXQvdGWINCS0L7Qu9C-0LTQuNC80LjRgNCwINCS0LjQvdC90LjRh9C10L3QutCw!5e0!3m2!1suk!2sua!4v1463514236467")
+    include ./footer.jade

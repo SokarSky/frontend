@@ -1,0 +1,52 @@
+main
+	min-height: 55vh 
+footer
+	max-height: 138px
+	.navbar
+		margin-bottom: 0
+		background: #100f0f
+		padding: 0 15% 1%
+		border-radius: 0
+		&.navbar-inverse
+			border: none
+			>.container-fluid
+				>.navbar-left
+					>.navbar-nav
+						li a
+							padding: 25px 20px
+				>.navbar-header
+					>.navbar-brand
+						padding-top: 5px
+						position: absolute
+						right: 20%
+						>img
+							height: 200%
+							@media (max-width: 768px)
+								height: 100%
+								margin-top: 0.3em
+					>#navbar-collapsed
+						>a
+							padding-top: 33px
+							padding-bottom: 33px
+							padding-left: 20px
+							padding-right: 20px
+							font-size: 10pt
+							font-family: 'Noto Sans'
+							color: #000000
+							text-transform: uppercase
+							.active, .open
+								border-top: 3px solid #d7742f
+								>a
+									background: none
+									box-shadow: none
+									padding-top: 30px
+			.down
+				border-top: 1px solid #1d1d1d
+				overflow: hidden
+				padding-top: 1%
+				>.social-icons
+					float: right
+				>#down
+					float: left
+					color: #ccc
+					padding-top: 1em

@@ -1,0 +1,140 @@
+doctype html5
+html(lang='uk')
+  head
+    title= title
+    
+    // Yandex.Metrika counter
+    
+    script(type='text/javascript').
+      (function (d, w, c) 
+        { (w[c] = w[c] || []).push(function() 
+          { 
+            try 
+              { 
+                w.yaCounter37549200 = new Ya.Metrika({
+                  id:37549200, 
+                  clickmap:true, 
+                  trackLinks:true, 
+                  accurateTrackBounce:true, 
+                  webvisor:true 
+                }); 
+              } 
+              catch(e) 
+              { }
+          }); 
+          var n = d.getElementsByTagName("script")[0],
+          s = d.createElement("script"),
+          f = function () { 
+            n.parentNode.insertBefore(s, n); 
+          }; 
+          s.type = "text/javascript"; 
+          s.async = true; 
+          s.src = "https://mc.yandex.ru/metrika/watch.js"; 
+          if (w.opera == "[object Opera]"){ 
+            d.addEventListener("DOMContentLoaded", f, false); 
+          }
+          else { f(); } })(document, window, "yandex_metrika_callbacks");
+    noscript
+      div
+        img(src='https://mc.yandex.ru/watch/37549200', style='position:absolute; left:-9999px;', alt='')
+    
+    script(src="http://code.jquery.com/jquery-2.2.3.min.js", integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=", crossorigin="anonymous")
+    script(src="/owlcarousel/owl.carousel.min.js")
+    script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', integrity='sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS', crossorigin='anonymous')
+    script(type="text/javascript",src="/fancybox/lib/jquery.mousewheel-3.0.6.pack.js")
+    
+    link(rel="stylesheet" href="/fancybox/source/jquery.fancybox.css" type="text/css" media="screen")
+    script(type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js")
+    
+    link(rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen")
+    script(type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js")
+    script(type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js")
+    
+    link(rel="stylesheet", href="/owlcarousel/assets/owl.carousel.min.css")
+    link(rel="stylesheet", href="/owlcarousel/assets/owl.theme.green.min.css")
+    link(rel='stylesheet', href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', crossorigin='anonymous')
+    link(rel='stylesheet', href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css', integrity='sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r', crossorigin='anonymous')
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Raleway:400,700|Open+Sans&subset=latin,cyrillic')
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Noto+Sans')
+    
+    link(rel='stylesheet', href='/stylesheets/footer.css', type='text/css')
+    link(rel='stylesheet', href='/stylesheets/menu.css', type='text/css')
+    link(rel='stylesheet', href='/stylesheets/banner.css', type='text/css')
+    link(rel='stylesheet', href='/stylesheets/search.css', type='text/css')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    meta(charset='utf8')
+    
+    script(type="text/javascript").
+      $(document).ready(function() {
+        $(".fancybox").fancybox({
+          prevEffect: 'none',
+          nextEffect: 'none',
+        });
+        $(".fancybox-iframe").fancybox({
+          autoSize: false,
+          type: "iframe",
+          height: 600,
+          width: 800
+        });
+      });
+    script(type='text/javascript').
+      $(document).ready(function() {
+        $(".btnForm").fancybox({
+          autoSize: false,
+          height: 400,
+          width: 520
+        });
+      });
+    
+  body
+    header
+      include ./menu.jade
+      include ./banner.jade
+    main
+      .container-fluid
+        .row
+            .hidden-xs.hidden-sm.col-md-3.col-md-offset-1.left-sidebar
+            
+              .container-fluid
+                .row
+                  form.form-inline.col-sm-12(role='form' method='post')
+                      input.form-control.col-sm-3(type="text", name='searchValue' placeholder='Пошук...' value = "")
+                      span.input-group-btn
+                        button.btn.btn-default(type = 'submit')
+                          span#submit.glyphicon.glyphicon-search(style='line-height: 1.4em;')
+                          
+              include ./category-tree.jade
+              
+            .col-sm-10.col-sm-offset-1.col-md-7.col-md-offset-0
+              -if(parcedJson.count == 0)
+                .col-sm-10.col-sm-offset-1.alert.alert-info
+                  | За вашим запитом нічого не знайдено. Спробуйте ще раз
+              -else
+                each exhibit in parcedJson.exhibits
+                  .container-fluid.item 
+                    .row
+                      -if(size)
+                        a.col-sm-6.fancybox(href='#{exhibit.img.relativepath}_lg.jpg', rel="group")
+                          img.img-responsive(src="#{exhibit.img.relativepath}_md.jpg")
+                      -else
+                        a.col-sm-6.fancybox(href='#{exhibit.img.relativepath}_md.jpg', rel="group")
+                          img.img-responsive(src="#{exhibit.img.relativepath}_sm.jpg")
+                      .col-sm-6.container-fluid  
+                        .row
+                          h4.title= exhibit.title
+                          .date
+                            span.glyphicon.glyphicon-time
+                              |  #{exhibit.dateStarted}-#{exhibit.dateFinish}
+                          .shortInfo
+                            span!= exhibit.bodyShort
+                          .more
+                            a.btn.btn-md.btn-primary(href="/item/" + '#{exhibit._id}')
+                              | Дізнатися більше
+              -if(parcedJson.count > 8)
+                nav
+                  ul.pagination
+                    -for(var i = 1; i < (parcedJson.count/8) + 1; i++)
+                      li
+                        a(href='/search/='+ '#{href}' + '&page=' + '#{i}') #{i} 
+    include ./footer.jade
+    

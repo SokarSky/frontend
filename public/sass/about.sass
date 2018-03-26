@@ -1,0 +1,31 @@
+$xs-device: 320px
+$sm-device: 768px
+$md-device: 992px
+$lg-device: 1200px
+
+main
+  .container-fluid
+    margin-bottom: 30px
+    .row
+      margin: 0
+    h3
+      text-align: center
+      background: url('/home-img/dash.png') no-repeat
+      background-position: bottom
+      padding-bottom: 1em
+      margin-bottom: 1em
+      @media(min-width: $sm-device) and (max-width: 991px)
+        font-size: 14pt
+        padding: 0 0 0.7em
+        margin: 0.5em 0 0.7em
+  @media(min-width: $sm-device) and (max-width: 991px)
+    p
+      font-size: 10pt
+  img
+    max-height: auto
+    max-width: 100%
+    @media(min-width: $md-device) and (max-width: $lg-device - 1)
+      width: 60%
+    @media(min-width: $sm-device) and (max-width: $md-device - 1)
+      width: 100%
+    
