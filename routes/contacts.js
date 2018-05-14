@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-var domain = 'http://admin.kspu-museum.in.ua';
+var domain = 'http://localhost:3005';
 var secret = '6LcLNyATAAAAAPnCNVZKyMRh2_GwReqq-gq76RkA';
 var buildmodule = require('./build-module');
 var postComment;
